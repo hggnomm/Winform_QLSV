@@ -27,6 +27,8 @@ namespace QLSinhVien
         {
             EnableControls(new List<Control> { txtMaMH, txtTenMH, txtSoTiet, btnLuu });
             ResetText(new List<Control> { txtMaMH, txtTenMH, txtSoTiet });
+            txtMaMH.Enabled = true; // Cho phép chỉnh sửa mã môn học
+            btnLuu.Enabled = true; // Cho phép bấm nút Lưu
             txtMaMH.Focus();
         }
 
@@ -87,6 +89,26 @@ namespace QLSinhVien
                 MessageBox.Show("Không thể thêm môn học");
             }
 
+        }
+
+        private void dtgvMH_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dtgvMH.SelectedRows.Count > 0)
+            {
+                var dongDuocChon = dtgvMH.SelectedRows[0];
+
+                // Pass values to textboxes
+                txtMaMH.Text = dongDuocChon.Cells["MaMH"].Value.ToString();
+                txtTenMH.Text = dongDuocChon.Cells["TenMH"].Value.ToString();
+                txtSoTiet.Text = dongDuocChon.Cells["SoTiet"].Value.ToString();
+
+                // Disable txtMaMH and btnLuu
+                txtMaMH.Enabled = false;
+                btnLuu.Enabled = false;
+
+                // Enable other controls for editing
+                EnableControls(new List<Control> { txtSoTiet, txtTenMH, btnXoa, btnSua });
+            }
         }
     }
 }
