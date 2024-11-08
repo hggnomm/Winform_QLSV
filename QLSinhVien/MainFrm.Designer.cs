@@ -173,12 +173,18 @@
             this.btnHienThiTatCa.TabIndex = 17;
             this.btnHienThiTatCa.Text = "Hiển thị tất cả";
             this.btnHienThiTatCa.UseVisualStyleBackColor = true;
+            this.btnHienThiTatCa.Click += new System.EventHandler(this.btnHienThiTatCa_Click);
             // 
             // dtgvMH
             // 
+            this.dtgvMH.AllowUserToAddRows = false;
+            this.dtgvMH.AllowUserToDeleteRows = false;
+            this.dtgvMH.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtgvMH.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dtgvMH.Location = new System.Drawing.Point(77, 312);
             this.dtgvMH.Name = "dtgvMH";
+            this.dtgvMH.ReadOnly = true;
+            this.dtgvMH.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtgvMH.Size = new System.Drawing.Size(977, 216);
             this.dtgvMH.TabIndex = 18;
             // 
@@ -191,7 +197,7 @@
             this.btnThemMoi.TabIndex = 19;
             this.btnThemMoi.Text = "Thêm mới";
             this.btnThemMoi.UseVisualStyleBackColor = true;
-            this.btnThemMoi.Click += new System.EventHandler(this.button1_Click);
+            this.btnThemMoi.Click += new System.EventHandler(this.btnThemMoi_Click);
             // 
             // btnLuu
             // 

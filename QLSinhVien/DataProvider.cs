@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Windows.Forms;
 
 namespace QLSinhVien
 {
@@ -53,6 +54,27 @@ namespace QLSinhVien
             {
                 CloseConnection();
             }
+        }
+        public static DataTable LoadCSDL(string query)
+        {
+            DataTable dt = new DataTable();
+
+            try
+            {
+                OpenConnection();
+                MySqlCommand command = new MySqlCommand(query, conn);
+                MySqlDataAdapter adaper = new MySqlDataAdapter(command);
+                adaper.Fill(dt);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+            return dt;
         }
     }
 }
