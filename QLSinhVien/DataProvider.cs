@@ -76,5 +76,25 @@ namespace QLSinhVien
             }
             return dt;
         }
+        public static int ThaoTacCSDL(string query)
+        {
+            int kq = 0;
+            try
+            {
+                OpenConnection();
+                MySqlCommand command = new MySqlCommand(query, conn);
+                kq = command.ExecuteNonQuery();
+            }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                CloseConnection();
+            }
+
+            return kq;
+        }
     }
 }

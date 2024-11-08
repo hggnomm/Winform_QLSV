@@ -35,7 +35,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.txtMaMH = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtSoTiet = new System.Windows.Forms.TextBox();
             this.txtTenMH = new System.Windows.Forms.TextBox();
             this.txtNoiDung = new System.Windows.Forms.TextBox();
             this.comboMaMH = new System.Windows.Forms.ComboBox();
@@ -117,12 +117,12 @@
             this.txtMaMH.Size = new System.Drawing.Size(212, 29);
             this.txtMaMH.TabIndex = 6;
             // 
-            // textBox5
+            // txtSoTiet
             // 
-            this.textBox5.Location = new System.Drawing.Point(156, 210);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(212, 29);
-            this.textBox5.TabIndex = 10;
+            this.txtSoTiet.Location = new System.Drawing.Point(156, 210);
+            this.txtSoTiet.Name = "txtSoTiet";
+            this.txtSoTiet.Size = new System.Drawing.Size(212, 29);
+            this.txtSoTiet.TabIndex = 10;
             // 
             // txtTenMH
             // 
@@ -208,6 +208,7 @@
             this.btnLuu.TabIndex = 20;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnSua
             // 
@@ -289,7 +290,7 @@
             this.Controls.Add(this.comboMaMH);
             this.Controls.Add(this.txtNoiDung);
             this.Controls.Add(this.txtTenMH);
-            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.txtSoTiet);
             this.Controls.Add(this.txtMaMH);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
@@ -317,7 +318,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtMaMH;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtSoTiet;
         private System.Windows.Forms.TextBox txtTenMH;
         private System.Windows.Forms.TextBox txtNoiDung;
         private System.Windows.Forms.ComboBox comboMaMH;
