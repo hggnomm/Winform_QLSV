@@ -68,6 +68,7 @@
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.Size = new System.Drawing.Size(304, 29);
             this.txtMatKhau.TabIndex = 2;
+            this.txtMatKhau.UseSystemPasswordChar = true;
             // 
             // btnDangNhap
             // 
@@ -87,6 +88,7 @@
             this.btnThoat.TabIndex = 4;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // DangNhapFrm
             // 
@@ -104,6 +106,7 @@
             this.Name = "DangNhapFrm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DangNhap";
+            this.Load += new System.EventHandler(this.DangNhapFrm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
