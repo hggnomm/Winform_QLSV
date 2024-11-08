@@ -16,6 +16,8 @@ namespace QLSinhVien
         public MainFrm()
         {
             InitializeComponent();
+            dtgvMH.SelectionChanged += dtgvMH_SelectionChanged; // Đăng ký sự kiện SelectionChanged
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -90,6 +92,25 @@ namespace QLSinhVien
             }
 
         }
+        private void dtgvMH_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dtgvMH.SelectedRows.Count > 0)
+            {
+                var dongDuocChon = dtgvMH.SelectedRows[0];
+
+                // Pass values to textboxes
+                txtMaMH.Text = dongDuocChon.Cells["MaMH"].Value.ToString();
+                txtTenMH.Text = dongDuocChon.Cells["TenMH"].Value.ToString();
+                txtSoTiet.Text = dongDuocChon.Cells["SoTiet"].Value.ToString();
+
+                // Disable txtMaMH and btnLuu
+                txtMaMH.Enabled = false;
+                btnLuu.Enabled = false;
+
+                // Enable other controls for editing
+                EnableControls(new List<Control> { txtSoTiet, txtTenMH, btnXoa, btnSua });
+            }
+        }
 
         private void dtgvMH_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -110,5 +131,37 @@ namespace QLSinhVien
                 EnableControls(new List<Control> { txtSoTiet, txtTenMH, btnXoa, btnSua });
             }
         }
+
+        private void btnSua_Click(object sender, EventArgs e)
+        {
+            string MaMH = txtMaMH.Text;
+            string tenMH = txtTenMH.Text;
+            string soTiet = txtSoTiet.Text;
+
+            // Kiểm tra xem số tiết có phải là số nguyên hợp lệ không
+            if (!int.TryParse(soTiet, out _))
+            {
+                MessageBox.Show("Số tiết phải là số nguyên hợp lệ.");
+                return;
+            }
+
+            // Thêm dấu nháy đơn quanh MaMH
+            string query = $"UPDATE MonHoc SET TenMH = '{tenMH}', SoTiet = {soTiet} WHERE MaMH = '{MaMH}'";
+
+            int kq = DataProvider.ThaoTacCSDL(query);
+
+            if (kq > 0)
+            {
+                MessageBox.Show("Sửa môn học thành công!");
+                LoadTableMonHoc();
+                UnEnableControls(new List<Control> { txtMaMH, txtTenMH, txtSoTiet, btnLuu });
+                ResetText(new List<Control> { txtMaMH, txtTenMH, txtSoTiet });
+            }
+            else
+            {
+                MessageBox.Show("Không thể sửa môn học");
+            }
+        }
+
     }
 }
